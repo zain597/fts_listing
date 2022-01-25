@@ -9,8 +9,8 @@
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/main-color.css" id="colors">
+<link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
+<link rel="stylesheet" href="{{asset('frontend/css/main-color.css')}}" id="colors">
 
 </head>
 
@@ -59,7 +59,7 @@
 
 			<ul data-submenu-title="Account">
 				<li><a href="dashboard-my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
-				<li><a href="index.html"><i class="sl sl-icon-power"></i> Logout</a></li>
+				<li><a href="{{ route('admin.logout') }}"><i class="sl sl-icon-power"></i> Logout</a></li>
 			</ul>
 
 		</div>
@@ -259,18 +259,18 @@
 
 <!-- Scripts
 ================================================== -->
-<script type="text/javascript" src="scripts/jquery-3.6.0.min.js"></script>
-<script type="text/javascript" src="scripts/jquery-migrate-3.3.2.min.js"></script>
-<script type="text/javascript" src="scripts/mmenu.min.js"></script>
-<script type="text/javascript" src="scripts/chosen.min.js"></script>
-<script type="text/javascript" src="scripts/slick.min.js"></script>
-<script type="text/javascript" src="scripts/rangeslider.min.js"></script>
-<script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="scripts/waypoints.min.js"></script>
-<script type="text/javascript" src="scripts/counterup.min.js"></script>
-<script type="text/javascript" src="scripts/jquery-ui.min.js"></script>
-<script type="text/javascript" src="scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
+<script type="text/javascript" src="{{asset('frontend/scripts/jquery-3.6.0.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/scripts/jquery-migrate-3.3.2.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/scripts/mmenu.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/scripts/chosen.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/scripts/slick.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/scripts/rangeslider.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/scripts/magnific-popup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/scripts/waypoints.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/scripts/counterup.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/scripts/jquery-ui.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/scripts/tooltips.min.js')}}"></script>
+<script type="text/javascript" src="{{asset('frontend/scripts/custom.js')}}"></script>
 
 
 </body>

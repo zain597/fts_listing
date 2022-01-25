@@ -20,6 +20,9 @@ Route::get('/', function () {
     return view('welcome');
 });  
 
+Route::get('/web/dashboard', function () {
+    return redirect('dashboard');
+});
 
 Route::group(['prefix'=>'admin','middleware'=>['admin:admin']],function(){
     Route::get('/login',[AdminController::class,'loginForm']);
@@ -27,8 +30,9 @@ Route::group(['prefix'=>'admin','middleware'=>['admin:admin']],function(){
 
     Route::get('register',[AdminRegister::class,'AdminRegister']);
     Route::post('register/store',[AdminRegister::class,'AdminRegisterStore'])->name('admin.register');
-
 });
+Route::get('admin/logout',[AdminRegister::class,'LogoutAdmin'])->name('admin.logout');
+
 
 
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard',function () {
