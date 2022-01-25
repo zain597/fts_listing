@@ -18,7 +18,8 @@ use App\Http\Controllers\Auth\AdminRegister;
 
 Route::get('/', function () {
     return view('welcome');
-});
+});  
+
 
 Route::group(['prefix'=>'admin','middleware'=>['admin:admin']],function(){
     Route::get('/login',[AdminController::class,'loginForm']);
