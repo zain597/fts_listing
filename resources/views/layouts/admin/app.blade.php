@@ -60,6 +60,7 @@
 			<ul data-submenu-title="Account">
 				<li><a href="dashboard-my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
 				<li><a href="{{ route('admin.logout') }}"><i class="sl sl-icon-power"></i> Logout</a></li>
+				
 			</ul>
 
 		</div>
