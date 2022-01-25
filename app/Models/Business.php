@@ -10,7 +10,7 @@ class Business extends Model
     use HasFactory;
     protected $guarded = [];
 
-    public function business()
+    public function businessCategory()
     {
         return $this->belongsToMany(Business::class);
     }

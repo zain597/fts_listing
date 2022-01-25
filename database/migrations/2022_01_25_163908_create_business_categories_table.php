@@ -16,7 +16,6 @@ class CreateBusinessCategoriesTable extends Migration
         Schema::create('business_categories', function (Blueprint $table) {
             $table->id();
             $table->string('text');
-            $table->integer('business_id');
             $table->timestamps();
         });
     }
