@@ -18,7 +18,7 @@ class CreateBusinessesTable extends Migration
             $table->integer('category_id');
             $table->string('name');
             $table->string('website')->nullable();
-            $table->string('areaServe');
+            $table->string('areaServe')->nullable();
             $table->string('phone');
             $table->string('sms')->nullable();
             $table->string('insta')->nullable();
@@ -28,8 +28,8 @@ class CreateBusinessesTable extends Migration
             $table->string('youtube')->nullable();
             $table->string('yelp')->nullable();
             $table->string('twitter')->nullable();
-            $table->string('address');
-            $table->string('email');
+            $table->string('address')->nullable();
+            $table->string('email')->nullable();
             $table->text('description');
             $table->boolean('status')->default(0);
             $table->timestamps();

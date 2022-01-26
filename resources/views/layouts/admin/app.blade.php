@@ -9,9 +9,11 @@
 
 <!-- CSS
 ================================================== -->
+<meta name="csrf-token" content="{{ csrf_token() }}">
 <link rel="stylesheet" href="{{asset('frontend/css/style.css')}}">
 <link rel="stylesheet" href="{{asset('frontend/css/main-color.css')}}" id="colors">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css">
+@stack('css')
 </head>
 
 <body>
@@ -31,7 +33,7 @@
 </div>
 <!-- Wrapper / End -->
 
-
+@stack('modal')
 <!-- Scripts
 ================================================== -->
 <script type="text/javascript" src="{{asset('frontend/scripts/jquery-3.6.0.min.js')}}"></script>
@@ -46,7 +48,34 @@
 <script type="text/javascript" src="{{asset('frontend/scripts/jquery-ui.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/scripts/tooltips.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('frontend/scripts/custom.js')}}"></script>
-
-
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+	@if(Session::has('message'))
+		var type="{{Session::get('alert-type')}}"
+		switch(type){
+			case 'info':
+				toastr.info("{{Session::get('message')}}");
+				breake;
+			case 'success':
+				toastr.success("{{Session::get('message')}}");
+				breake;
+			case 'warning':
+				toastr.warning("{{Session::get('message')}}");
+				breake;
+			case 'error':
+				toastr.error("{{Session::get('message')}}");
+				breake;
+	}
+	@endif
+</script>
+@stack('js')
+<script>
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+</script>
 </body>
 </html>

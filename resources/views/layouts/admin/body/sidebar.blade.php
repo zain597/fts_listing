@@ -22,7 +22,8 @@
                 <li><a><i class="sl sl-icon-layers"></i> Business</a>
                     <ul>
                         <li><a href="{{route('add_category')}}">Category </a></li>
-                        <li><a href="dashboard-my-listings.html">Pending </a></li>
+                        <li><a href="{{route('add_business')}}">Add Business </a></li>
+                        <li><a href="{{route('all.businesses')}}">View Business </a></li>
                         <li><a href="dashboard-my-listings.html">Expired </a></li>
                     </ul>
                 </li>

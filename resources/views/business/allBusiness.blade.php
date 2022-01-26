@@ -11,65 +11,50 @@
     <!-- Navigation
     ================================================== -->
     @include('layouts.admin.body.sidebar')
-
     <!-- Content
-    ================================================== -->
-    <div class="dashboard-content">
+	================================================== -->
+	<div class="dashboard-content">
+		<!-- Titlebar -->
+		<div id="titlebar">
+			<div class="row">
+				<div class="col-md-12">
+					<h2>All Businesses</h2>
+					<!-- Breadcrumbs -->
+					<nav id="breadcrumbs">
+						<ul>
+							<li><a href="#">Home</a></li>
+							<li><a href="#">Dashboard</a></li>
+							<li>All Business</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</div>
 
-        <div class="row">
-            <div class="col-sm-4">
-                    <!-- Section -->
-                <div class="add-listing-section">
-
-                    <!-- Headline -->
-                    <div class="add-listing-headline">
-                        <h3><i class="sl sl-icon-doc"></i> Basic Informations</h3>
-                    </div>
-                    <form action="{{route('category.store')}}" method="POST">
-                        @csrf
-                        <!-- Title -->
-                    <div class="row with-forms">
-                        <div class="col-md-12">
-                            <h5>Listing Title <i class="tip" data-tip-content="Name of your business"></i></h5>
-                            <input type="text" class="search-field" name="text"  value=""/>
-                        </div>
-                    </div>
-
-                    <!-- Row -->
-                    <div class="row with-forms">
-                        <button type="submit" class="button preview">Submit</button>
-                    </div>
-                    <!-- Row / End -->
-                    </form>
-
-
-                </div>
-            <!-- Section / End -->
+		<div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered yajra-datatable">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Name</th>
+                            <th>Created At</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
             </div>
-            <div class="col-sm-8 mt-2">
-                <!-- Section -->
-                <div class="add-listing-section">
+			<!-- Copyrights -->
+			<div class="col-md-12">
+				<div class="copyrights">© 2022 Listeo. All Rights Reserved.</div>
+			</div>
 
-                    <table class="table table-bordered yajra-datatable">
-                        <thead>
-                            <tr>
-                                <th>Text</th>
-                                <th>Action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+		</div>
 
-                </div>
-                <!-- Section / End -->
-            </div>
-        </div>
-
-
-    </div>
-    <!-- Content / End -->
-
+	</div>
+	<!-- Content / End -->
 
 </div>
 @endsection
@@ -80,15 +65,16 @@
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 <script src="//cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 <script type="text/javascript">
-    
     $(document).ready(function(){
         $(function () {
             var table = $('.yajra-datatable').DataTable({
                 processing: true,
                 serverSide: true,
-                ajax: "{{ route('category.list') }}",
+                ajax: "{{ route('businesses.list') }}",
                 columns: [
-                    {data: 'text', name: 'text' },
+                    {data: 'category_id', name: 'businessCategory.text' },
+                    {data: 'name', name: 'name' },
+                    {data: 'created_at', name: 'created_at' },
                     {
                         data: 'action', 
                         name: 'action', 
@@ -103,9 +89,9 @@
                 responsive: true,
             });
         });
-        $(document).on('click','#deleteCategory',function(){
-            var category_id = $(this).data('id');
-            var url = '<?= route("category.delete") ?>';
+        $(document).on('click','#deleteBusiness',function(){
+            var business_id = $(this).data('id');
+            var url = '<?= route("business.delete") ?>';
             swal.fire({
                 title:'Are you sure?',
                 html:'you want to <b>delete</b> this row',
@@ -119,7 +105,7 @@
                 allowOutsideClick:false
             }).then(function(result){
                 if(result.value){
-                    $.post(url,{category_id:category_id}, function(data){
+                    $.post(url,{business_id:business_id}, function(data){
                         if(data.code == 1){
                             toastr.success(data.msg);
                             $('.yajra-datatable').DataTable().ajax.reload(null, false);
